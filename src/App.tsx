@@ -1,23 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import './App.scss';
+import LoginButton from './components/LoginButton';
+import { LogIn } from './services/LoginAPI';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const handleLogin = async () => {
+    !isLoggedIn && await LogIn();
+    setIsLoggedIn(pState => !pState)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {isLoggedIn && 'Você está logado!'}
+        <LoginButton setIsLoggedIn={handleLogin} isLoggedIn={isLoggedIn} />
       </header>
     </div>
   );
