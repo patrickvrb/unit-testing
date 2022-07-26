@@ -1,21 +1,13 @@
-import { FC, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { LogIn } from "../../services/Auth";
-
-type LoginButtonProps = {
-    isLoggedIn: boolean,
-    setIsLoggedIn: () => void
-}
+import { FC } from "react";
+import { useAppContext } from "../../contexts/AppContext";
+import useAuth from "../../hooks/useAuth";
 
 const LoginButton: FC = () => {
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const navigate = useNavigate();
+    const { isLoggedIn, setIsLoggedIn } = useAppContext();
+    const login = useAuth();
 
-    const handleLogin = async () => {
-      !isLoggedIn && await LogIn();
-      setIsLoggedIn(pState => !pState)
-    }
+    const handleLogin = async () => await login.then(() => setIsLoggedIn(pState => !pState));
 
     return <>
         <bds-button onClick={handleLogin}>

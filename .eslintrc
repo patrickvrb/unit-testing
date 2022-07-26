@@ -1,5 +1,9 @@
 {
-    "ignorePatterns": ["*.js"],
+  "ignorePatterns": ["*.js"],
   "plugins": ["@typescript-eslint", "react", "react-hooks"],
-
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  }
 }
