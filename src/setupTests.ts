@@ -3,3 +3,12 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
+import React from 'react';
+
+// jest.spyOn(React, 'useState').mockImplementation(() => [false, jest.fn()]);
+jest.mock('react-router-dom', () => {
+    return {
+        useNavigate: () => jest.fn(),
+    }
+}
+);

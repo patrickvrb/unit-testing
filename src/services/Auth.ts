@@ -1,4 +1,3 @@
-export const LogIn = async () => {
-    const timeout = 500
-    return new Promise((resolve) => setTimeout(() => resolve(true), timeout))
+export const LogIn = async (timeout = 1500) => {
+    return new Promise<boolean>((resolve) => setTimeout(() => resolve(true), timeout))
 }

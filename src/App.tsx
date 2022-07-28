@@ -1,4 +1,5 @@
 import { applyPolyfills, defineCustomElements } from 'blip-ds/loader';
+import { FC } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.scss';
 import LoginButton from './components/LoginButton';
@@ -6,9 +7,9 @@ import { AppProvider } from './contexts/AppContext';
 import Landing from './pages/Landing';
 import Welcome from './pages/Welcome';
 
-function App() {
+const App: FC = () => {
 
-  applyPolyfills().then(() => defineCustomElements())
+  // applyPolyfills().then(() => defineCustomElements())
 
   return (
     <div className="App">

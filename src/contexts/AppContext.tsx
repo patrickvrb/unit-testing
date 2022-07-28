@@ -1,5 +1,5 @@
 import { createContext, Dispatch, FC, ReactNode, SetStateAction, useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 type AppContextType = {
     isLoggedIn: boolean,

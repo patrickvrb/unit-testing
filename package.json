@@ -3,27 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.11.43",
-    "@types/react": "^18.0.14",
-    "@types/react-dom": "^18.0.5",
     "blip-ds": "^1.200.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "sass": "^1.54.0",
-    "typescript": "^4.7.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --coverage",
+    "eject": "react-scripts eject",
+    "jest:clear_cache": "jest --clearCache",
+    "update:snapshot": "jest --updateSnapshot"
   },
   "eslintConfig": {
     "extends": [
@@ -43,12 +36,45 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "resetMocks": false,
+    "transform": {
+      "^.+\\.[t|j]sx$": "babel-jest",
+      ".+\\.(css|styl|less|sass|scss)$": "jest-css-modules-transform"
+    },
+    "coveragePathIgnorePatterns": [
+      "index.ts",
+      "node_modules"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "coverageReporters": ["text"]
+  },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.18.9",
     "@babel/preset-env": "^7.18.9",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/jsdom": "^20.0.0",
+    "@types/node": "^16.11.43",
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
+    "babel-jest": "^28.1.3",
     "eslint-plugin-react": "^7.30.1",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "jest-css-modules-transform": "^4.4.2",
+    "jsdom": "^20.0.0",
+    "sass": "^1.54.0",
+    "typescript": "^4.7.4"
   }
 }
